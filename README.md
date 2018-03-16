@@ -65,12 +65,16 @@ While the environment is activate, create migrations, then migrate the database,
 
 The above command will create migrations files and migrate our database scheme to SQLite.
 
-Once the migrate is complete, we have to create super-user for our project who will be login in on the admin site.
+Once the migrate is complete, we have to create super-user for our admin site.
 ```
 (env)Bug-tracker$ python manage.py createsuperuser
 ```
 
-Will be asked for username, enmail and password, once done you can start the application with the following command
+Will be asked for username, enmail and password, fill in the questions
+
+## Running the pp
+
+Once done creating super-user, you can start the application with the following command
 ```
 (env)Bug-tracker$ python manage.py runserver
 ```
