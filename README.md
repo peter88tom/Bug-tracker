@@ -70,7 +70,7 @@ Once the migrate is complete, we have to create super-user for our admin site.
 (env)Bug-tracker$ python manage.py createsuperuser
 ```
 
-Will be asked for username, enmail and password, fill in the questions
+Will be asked for username, email and password, fill in the questions
 
 ## Running the pp
 
