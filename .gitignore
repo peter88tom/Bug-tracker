@@ -11,3 +11,4 @@ venv/
 .static_storage/
 .media/
 local_settings.py
+*.pyc
