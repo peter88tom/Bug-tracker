@@ -54,6 +54,7 @@ The environment has been activated, let install project dependencies which  is l
 
 
 * **Database configurations**
+
 The dependecies will be installed, now let's do database configuration for our application.
 
 While the environment is activate, create migrations, then migrate the database, we don't do any database settings on our *admin/setings.py* because we are using SQLite which is the default django database 
