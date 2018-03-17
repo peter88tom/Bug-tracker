@@ -3,4 +3,5 @@ from app import views
 
 urlpatterns = [
     url(r'^$', views.homepage, name='index'),
+    url(r'^create_bug/$', views.new_bug, name='submit_bug')
 ]
