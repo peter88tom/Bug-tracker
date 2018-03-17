@@ -120,9 +120,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = 'http://localhost/Bug-tracker/static/'
-#STATIC_ROOT  = os.path.join(BASE_DIR, "static")
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
-MEDIA_ROOT = '/var/www/html/Bug-tracker/static/img/'
-MEDIA_URL = '/img/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
