@@ -9,7 +9,13 @@ from django.contrib import messages
 
 # Create your views here.
 def homepage(request):
-	return render(request, 'index.html')
+
+	""" Get list of all bugs """
+	bugs = Bug.objects.all()
+
+	args = {"bugs":bugs}
+	
+	return render(request, 'index.html', args)
 
 def new_bug(request):
 	
