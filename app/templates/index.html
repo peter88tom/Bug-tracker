@@ -17,7 +17,13 @@
 
           <select class="form-control" id="project-filter">
             <option value="">Filter By Project</option>
-            <option>Project1</option>
+            {% if projects %}
+
+                {% for project in projects %}
+                <option value="{{ project.id }}">{{ project.project_name }}</option>
+                {% endfor %}
+
+              {% endif %}
           </select>
 
         </div>

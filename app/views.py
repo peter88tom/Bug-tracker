@@ -12,9 +12,10 @@ def homepage(request):
 
 	""" Get list of all bugs """
 	bugs = Bug.objects.all()
+	projects = Project.objects.all()
 
-	args = {"bugs":bugs}
-	
+	args = {"bugs":bugs,"projects":projects}
+
 	return render(request, 'index.html', args)
 
 def new_bug(request):
