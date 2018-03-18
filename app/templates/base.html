@@ -9,6 +9,10 @@
    {% load staticfiles %}
   <!-- Load bootstrap core CSS -->
   <link href="{% static 'libs/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Load select2 css -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
   
 
@@ -32,6 +36,8 @@
 <script src="{% static 'libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/1.0.0-beta.1/classic/ckeditor.js"></script>
 
+<!-- Select2 Javascript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
 <script>
 	// Add editingfeautures to text areas using ckeditor
@@ -40,5 +46,7 @@
         .catch( error => {
             console.error( error );
         } );
+
+        $('#project-filter').select2();
 </script>
 </html>
