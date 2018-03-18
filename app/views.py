@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Project, Bug
 from .forms import CreateNewBug
+from django.contrib import messages
 
 # Create your views here.
 def homepage(request):
@@ -28,12 +29,14 @@ def new_bug(request):
 			savebug = Bug(description=description,project=project,date_added=date_added)
 			savebug.save()
 
-			
-			return render(request, 'new-bug.html', {"form":form, "projects":list_of_projects} )
+			msg = messages.success(request, 'saved successfuly')
+			return redirect(new_bug)
 
 		""" Handle invalid form submission """
-		return render(request, 'new-bug.html', {"form":form, "projects":list_of_projects})
+		args = {"form":form, "projects":list_of_projects}
+		return render(request, 'new-bug.html', args)
 
 	""" Handle other type of requests such as GET """
 	form = CreateNewBug()
-	return render(request, 'new-bug.html', {"form":form, "projects":list_of_projects})
+	args = {"form":form, "projects":list_of_projects}
+	return render(request, 'new-bug.html', args)
