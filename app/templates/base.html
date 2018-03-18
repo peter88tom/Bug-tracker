@@ -40,13 +40,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
 <script>
-	// Add editingfeautures to text areas using ckeditor
+	// Add editing feautures to text areas using ckeditor
 	  ClassicEditor
         .create( document.querySelector( '#bug-editor' ) )
         .catch( error => {
             console.error( error );
         } );
 
-        $('#project-filter').select2();
+    // Add select2 to enhance project selection
+    $('#project-filter').select2();
 </script>
 </html>
