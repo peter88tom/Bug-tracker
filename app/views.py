@@ -19,11 +19,17 @@ def new_bug(request):
 	if request.method == "POST":
 		form = CreateNewBug(request.POST)
 		if form.is_valid():
-			project = form.cleaned_data['project']
+			""" Get project instance """
+			project = Project.objects.get(pk=request.POST.get('project'))
 			date_added = form.cleaned_data['date_added']
-			descriptions = form.cleaned_data['description']
+			description = form.cleaned_data['description']
 
-			print descriptions
+			""" save bug """
+			savebug = Bug(description=description,project=project,date_added=date_added)
+			savebug.save()
+
+			
+			return render(request, 'new-bug.html', {"form":form, "projects":list_of_projects} )
 
 		""" Handle invalid form submission """
 		return render(request, 'new-bug.html', {"form":form, "projects":list_of_projects})
