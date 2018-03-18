@@ -19,8 +19,13 @@
             <div class="form-group">
             <select class="form-control" id="project-filter">
               <option value="">Select the project</option>
-              <option>Project1</option>
-              <option>Vodacom Project</option>
+              {% if projects %}
+
+                {% for project in projects %}
+                <option value="{{ project.id }}">{{ project.project_name }}</option>
+                {% endfor %}
+
+              {% endif %}
             </select>
           </div>
 
