@@ -15,9 +15,10 @@
           <br>
           <h1 class="text-center">SUBMIT A BUG</h1><br>
          
-         <form>
+         <form action="{% url 'submit_bug' %}" method="POST">
+            {% csrf_token %}
             <div class="form-group">
-            <select class="form-control" id="project-filter">
+            <select class="form-control" id="project-filter" name="project">
               <option value="">Select the project</option>
               {% if projects %}
 
@@ -30,11 +31,11 @@
           </div>
 
           <div class="form-group">
-            <textarea class="form-control" id="bug-editor" placeholder="Description of the bug"></textarea>
+            <textarea class="form-control" id="bug-editor" placeholder="Description of the bug" name="description"></textarea>
           </div>
 
           <div class="form-group text-center">
-            <button class="btn btn-success btn-lg">Submit</button>
+            <button type="submit" class="btn btn-success btn-lg">Submit</button>
           </div>
         </form>
 

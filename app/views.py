@@ -10,7 +10,11 @@ def homepage(request):
 	return render(request, 'index.html')
 
 def new_bug(request):
-	# Get a list of projects
-	list_of_projects = Project.objects.all()
+	""" Handle form submission for creating new project bug """
+	if request.method == "POST":
+		print "we are posting data"
+	else:
+	    # Get a list of projects
+	    list_of_projects = Project.objects.all()
 
-	return render(request, 'new-bug.html', {"projects":list_of_projects})
+	    return render(request, 'new-bug.html', {"projects":list_of_projects})
