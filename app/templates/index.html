@@ -1,0 +1,75 @@
+{% extends  'base.html' %}
+
+{% block content %}
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-lg-1"></div>
+        <!-- /.col-lg-3 -->
+
+        <div class="col-lg-10">
+          
+          <br>
+          <h1 class="text-center">ALL BUGS</h1><br>
+
+          <select class="form-control" id="project-filter">
+            <option value="">Filter By Project</option>
+            <option>Project1</option>
+          </select>
+
+        </div>
+        <!-- /.col-lg-12 -->
+
+        <div class="col-lg-1"></div>
+
+      </div>
+
+         
+          <div class="row" style="margin-top: 25px; margin-bottom: 25px;">
+
+            <div class="col-lg-4">
+               
+               <div class="card jumbotron">
+                <div class="card-body">
+                  <h4 class="card-title">Project name: Vodacom</h4>
+                  <h4 class="card-title">Bug Description</h4>
+                  <p class="card-text">Some quick example text to build content..</p>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-lg-4">
+             <div class="card jumbotron">
+                 <div class="card-body">
+                  <h4 class="card-title">Project name: African Bank</h4>
+                  <h4 class="card-title">Bug Description</h4>
+                  <p class="card-text">Some quick example text to build content.</p>
+                </div>
+            </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="card jumbotron">
+                   <div class="card-body">
+                  <h4 class="card-title">Project name: CTM</h4>
+                  <h3 class="card-title">Bug Description</h3>
+                  <p class="card-text">Some quick example text to build content.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+   
+
+    </div>
+    <!-- /.container -->
+
+
+
+
+
+{% endblock %}
