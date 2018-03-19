@@ -2,11 +2,12 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render,redirect
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 from .models import Project, Bug
 from .forms import CreateNewBug
 from django.contrib import messages
-
+from django.core import serializers
+import json
 # Create your views here.
 def homepage(request):
 
@@ -17,6 +18,7 @@ def homepage(request):
 	args = {"bugs":bugs,"projects":projects}
 
 	return render(request, 'index.html', args)
+	
 
 def new_bug(request):
 	
