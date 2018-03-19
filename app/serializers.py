@@ -1,10 +1,22 @@
 from rest_framework import serializers
-from app.models import Bug
+from app.models import Bug, Project
+
 
 """
- Serializers Bug model 
+ Serialize Project Model
 """
-class BugSerializer(serializers.HyperlinkedModelSerializer):
+class ProjectSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Project
+		fields = '__all__'
+
+
+
+"""
+Serialize Bug Model
+"""
+class ProjectBugSerializer(serializers.ModelSerializer):
+	project = ProjectSerializer()
 	class Meta:
 		model = Bug
-		fields = ('project','description','date_added')
+		fields = '__all__'

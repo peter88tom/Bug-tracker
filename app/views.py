@@ -6,8 +6,11 @@ from django.http import HttpResponse,JsonResponse
 from .models import Project, Bug
 from .forms import CreateNewBug
 from django.contrib import messages
-from app.serializers import BugSerializer
+
 from rest_framework import viewsets
+from app.serializers import ProjectSerializer,ProjectBugSerializer
+
+
 
 
 
@@ -24,13 +27,21 @@ def homepage(request):
 
 	return render(request, 'index.html', args)
 
-""" 
-Api end point to allow easy fitlering of bugs 
-"""
-class BugView(viewsets.ModelViewSet):
-	bugs = Bug.objects.all()
 
-	serializer_class = BugSerializer
+""" API for listing projects """
+class ProjectViewSet(viewsets.ModelViewSet):
+
+	queryset = Project.objects.all()
+
+	serializer_class = ProjectSerializer
+
+
+""" API for listing project bugs """
+class ProjectBugViewSet(viewsets.ModelViewSet):
+
+	queryset = Bug.objects.all()
+	serializer_class = ProjectBugSerializer
+
 
 
 
