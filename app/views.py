@@ -6,8 +6,13 @@ from django.http import HttpResponse,JsonResponse
 from .models import Project, Bug
 from .forms import CreateNewBug
 from django.contrib import messages
-from django.core import serializers
-import json
+from app.serializers import BugSerializer
+from rest_framework import viewsets
+
+
+
+
+
 # Create your views here.
 def homepage(request):
 
@@ -18,7 +23,16 @@ def homepage(request):
 	args = {"bugs":bugs,"projects":projects}
 
 	return render(request, 'index.html', args)
-	
+
+""" 
+Api end point to allow easy fitlering of bugs 
+"""
+class BugView(viewsets.ModelViewSet):
+	bugs = Bug.objects.all()
+
+	serializer_class = BugSerializer
+
+
 
 def new_bug(request):
 	
