@@ -15,7 +15,7 @@
           <br>
           <h1 class="text-center">ALL BUGS</h1><br>
 
-          <select class="form-control" id="project-filter">
+          <select class="form-control app-filter" id="project-filter">
             <option value="">Filter By Project</option>
             {% if projects %}
 
@@ -25,6 +25,7 @@
 
               {% endif %}
           </select>
+           <input type="hidden" id="token" name="token" value="{{ csrf_token }}" hidden="true">
 
         </div>
         <!-- /.col-lg-12 -->

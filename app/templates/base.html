@@ -51,5 +51,29 @@
     $('#project-filter').select2();
     
     $(".alert-success").slideUp(1500);
+    
+
+    $(".app-filter").on("change", function(e){
+      e.preventDefault();
+      
+      // Get current selected project
+      var proj_id = $(this).val();
+      var token = $("#token").val();
+       
+      // validate if project is selected
+      if(proj_id != ''){
+          
+          $.ajax({
+
+            type : "post",
+            url  : "api",
+            data : {}
+          });
+
+      }else{
+        console.log("please choose a project");
+      }
+
+    });
 </script>
 </html>
