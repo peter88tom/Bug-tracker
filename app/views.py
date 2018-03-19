@@ -22,7 +22,9 @@ def homepage(request):
 
 def new_bug(request):
 	
-	""" Get list of projects to show on selection """
+	""" 
+	Get list of projects to show on selection 
+	"""
 	list_of_projects = Project.objects.all()
 
 	""" Handle form submission for creating new project bug """
@@ -31,11 +33,10 @@ def new_bug(request):
 		if form.is_valid():
 			""" Get project instance """
 			project = Project.objects.get(pk=request.POST.get('project'))
-			date_added = form.cleaned_data['date_added']
 			description = form.cleaned_data['description']
 
 			""" save bug """
-			savebug = Bug(description=description,project=project,date_added=date_added)
+			savebug = Bug(description=description,project=project)
 			savebug.save()
 
 			msg = messages.success(request, 'saved successfuly')
