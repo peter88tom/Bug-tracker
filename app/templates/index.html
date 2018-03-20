@@ -35,32 +35,26 @@
       </div>
 
          
-          <div class="row" style="margin-top: 25px; margin-bottom: 25px;">
-           
-           {% if bugs %}
-           {% for bug in bugs %}
-            <div class="col-lg-4">
+          <div class="row" style="margin-top: 25px; margin-bottom: 25px;" id="bugs-list">
+
+            <div v-for="bug in bugs" class="col-lg-4">
                
                <div class="card jumbotron">
                 <div class="card-body">
-                  <h4 class="card-title">Project name: {{ bug.project.project_name }}</h4>
+                  <h4 class="card-title">Project name: [[ bug.project.project_name ]]</h4>
                   <h4 class="card-title">Bug Description:</h4>
-                  {{ bug.description|safe }}
+                  [[ bug.description ]] 
                 </div>
               </div>
 
             </div>
-            {% endfor %}
-            {% else %}
-            <div class="col-lg-12">
-               <div class="alert alert-warning text-center" role="alert">
-                 <h4>There are not bugs at the moment!</h4>
-              </div>
+
+           <div class="col-lg-12">
+             <div v-if="bugs.length==0" class="alert alert-warning text-center" role="alert">
+              No bug has been created.
             </div>
+          </div>
 
-            {% endif%}
-
- 
 
           </div>
    

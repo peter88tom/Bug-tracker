@@ -38,6 +38,9 @@
 
 <!-- Select2 Javascript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<!-- Vuejs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.0.3/vue-resource.min.js"></script>
 
 <script>
 	// Add editing feautures to text areas using ckeditor
@@ -51,5 +54,36 @@
     $('#project-filter').select2();
     
     $(".alert-success").slideUp(1500);
+    
+</script>
+
+
+<script>
+
+  // Initiate Vue instance
+  new Vue({
+
+  delimiters:["[[","]]"],
+  
+  // Element where vue will load data
+  el: '#bugs-list',
+
+  // Data object to be passed to the element
+  data: {
+    bugs: []
+  },
+  
+  created: function () {
+    this.fetchData();
+    
+  }, 
+  methods: {
+    fetchData: function () {
+        this.$http.get("http://localhost:8000/api-bugs/")
+        .then(response=>{this.bugs=response.data});
+    }
+  }
+});
+
 </script>
 </html>
