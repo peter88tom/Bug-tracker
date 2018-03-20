@@ -16,16 +16,9 @@ from app.serializers import ProjectSerializer,ProjectBugSerializer
 
 
 
-# Create your views here.
+""" Render html template, List of bugs and projects will handled by Vuejs"""
 def homepage(request):
-
-	""" Get list of all bugs """
-	bugs = Bug.objects.all()
-	projects = Project.objects.all()
-
-	args = {"bugs":bugs,"projects":projects}
-
-	return render(request, 'index.html', args)
+	return render(request, 'index.html')
 
 
 """ API for listing projects """
