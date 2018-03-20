@@ -14,18 +14,7 @@
           
           <br>
           <h1 class="text-center">ALL BUGS</h1><br>
-
-          <select class="form-control app-filter" id="project-filter">
-            <option value="">Filter By Project</option>
-            {% if projects %}
-
-                {% for project in projects %}
-                <option value="{{ project.id }}">{{ project.project_name }}</option>
-                {% endfor %}
-
-              {% endif %}
-          </select>
-           <input type="hidden" id="token" name="token" value="{{ csrf_token }}" hidden="true">
+           
 
         </div>
         <!-- /.col-lg-12 -->
@@ -35,8 +24,17 @@
       </div>
 
          
-          <div class="row" style="margin-top: 25px; margin-bottom: 25px;" id="bugs-list">
-
+          <div id="bugs-list">
+            
+          <div class="row" style="margin-top: 25px; margin-bottom: 25px;">
+            <div class="col-lg-12">
+            <select class="form-control" v-on:change="onChangeProject">
+              <option v-for="project in projects" v-bind:value=[[project.id]]>[[project.project_name ]]</option>
+            </select>
+          </div>
+          </div>
+          
+           <div class="row">
             <div v-for="bug in bugs" class="col-lg-4">
                
                <div class="card jumbotron">
@@ -48,6 +46,7 @@
               </div>
 
             </div>
+          </div>
 
            <div class="col-lg-12">
              <div v-if="bugs.length==0" class="alert alert-warning text-center" role="alert">

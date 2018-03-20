@@ -70,20 +70,42 @@
 
   // Data object to be passed to the element
   data: {
-    bugs: []
+    bugs: [],
+    projects:[],
   },
   
   created: function () {
-    this.fetchData();
-    
+    this.fetchBugs();
+    this.fetchProjects(); 
   }, 
+
   methods: {
-    fetchData: function () {
+
+    // Fetch all bugs form api end point
+    fetchBugs: function () {
         this.$http.get("http://localhost:8000/api-bugs/")
         .then(response=>{this.bugs=response.data});
+    },
+
+
+     // Fetch all projects form api end point
+    fetchProjects: function () {
+        this.$http.get("http://localhost:8000/api-projects/")
+        .then(response=>{this.projects=response.data});
+    },
+
+
+
+    // Listen to project change
+    onChangeProject:function(){
+      var self = this
+      console.log("Changed");
     }
+
   }
 });
+
+
 
 </script>
 </html>
