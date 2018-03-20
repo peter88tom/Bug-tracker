@@ -72,6 +72,7 @@
   data: {
     bugs: [],
     projects:[],
+    selectedproject:'',
   },
   
   created: function () {
@@ -81,14 +82,14 @@
 
   methods: {
 
-    // Fetch all bugs form api end point
+    // Fetch all bugs from api end point
     fetchBugs: function () {
         this.$http.get("http://localhost:8000/api-bugs/")
         .then(response=>{this.bugs=response.data});
     },
 
 
-     // Fetch all projects form api end point
+     // Fetch all projects from api end point
     fetchProjects: function () {
         this.$http.get("http://localhost:8000/api-projects/")
         .then(response=>{this.projects=response.data});
@@ -96,10 +97,11 @@
 
 
 
-    // Listen to project change
+    // Listen to project change, then update the bugs object
+    // The api end-point should return the same formart as from fetchBugs
     onChangeProject:function(){
-      var self = this
-      console.log("Changed");
+      var self = this;
+      console.log(this.selectedproject[0][0]);
     }
 
   }
