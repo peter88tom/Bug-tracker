@@ -1,0 +1,15 @@
+# Add any directory or file that you don't want to be tracked by version control
+
+# Environment
+.env
+.venv
+env/
+venv/
+
+# Django stuff:
+*.log
+.static_storage/
+.media/
+local_settings.py
+*.pyc
+*.sqlite3

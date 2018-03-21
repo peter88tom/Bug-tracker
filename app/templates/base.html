@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="A responsive web application for tracking project bugs">
+  <title>::BUG-TRACKER</title>
+   
+   {% load staticfiles %}
+  <!-- Load bootstrap core CSS -->
+  <link href="{% static 'libs/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Load select2 css -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  
+
+
+</head>
+<body>
+
+ <!-- include navigation -->
+ {% include 'navigation.html' %}
+
+
+
+ {% block content %} {% endblock %}
+
+
+
+</body>
+
+<!-- Bootstrap core JavaScript -->
+<script src="{% static 'libs/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/1.0.0-beta.1/classic/ckeditor.js"></script>
+
+<!-- Select2 Javascript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<!-- Vuejs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.0.3/vue-resource.min.js"></script>
+
+<script>
+	// Add editing feautures to text areas using ckeditor
+	  ClassicEditor
+        .create( document.querySelector( '#bug-editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+
+    // Add select2 to enhance project selection
+    $('#project-filter').select2();
+    
+    $(".alert-success").slideUp(2500);
+    
+</script>
+
+
+<script>
+
+  // Initiate Vue instance
+  new Vue({
+
+  delimiters:["[[","]]"],
+  
+  // Element where vue will load data
+  el: '#bugs-list',
+
+  // Data object to be passed to the element
+  data: {
+    bugs: [],
+    projects:[],
+    selectedproject:'',
+  },
+  
+  created: function () {
+    this.fetchBugs();
+    this.fetchProjects(); 
+  }, 
+
+  methods: {
+
+    // Fetch all bugs from api end point
+    fetchBugs: function () {
+        this.$http.get("http://localhost:8000/api-bugs/")
+        .then(response=>{this.bugs=response.data});
+    },
+
+
+     // Fetch all projects from api end point
+    fetchProjects: function () {
+        this.$http.get("http://localhost:8000/api-projects/")
+        .then(response=>{this.projects=response.data});
+    },
+
+
+
+    // Listen to project change, then update the bugs object
+    // The api end-point should return the same formart as from fetchBugs
+    onChangeProject:function(){
+      var self = this;
+      this.$http.get("http://localhost:8000/bug-by-project/"+this.selectedproject[0][0]+"/")
+        .then(response=>{this.bugs=response.data});
+    }
+
+  }
+});
+
+
+
+</script>
+</html>
