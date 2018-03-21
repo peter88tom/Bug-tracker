@@ -14,12 +14,9 @@ from rest_framework.decorators import api_view
 
 
 
-
-
-
-
 """ Render html template, List of bugs and projects will handled by Vuejs"""
 def homepage(request):
+	
 	return render(request, 'index.html')
 
 
@@ -37,8 +34,11 @@ class ProjectBugViewSet(viewsets.ModelViewSet):
 	queryset = Bug.objects.all()
 	serializer_class = ProjectBugSerializer
 
+
+
 """ API filter by project """
 class BugByProjectList(generics.ListAPIView):
+
     serializer_class = ProjectBugSerializer
 
     def get_queryset(self):
@@ -47,6 +47,8 @@ class BugByProjectList(generics.ListAPIView):
         return Bug.objects.filter(project=project)
 
 
+
+""" Create a new bug """
 def new_bug(request):
 	
 	""" 
@@ -66,7 +68,7 @@ def new_bug(request):
 			savebug = Bug(description=description,project=project)
 			savebug.save()
 
-			msg = messages.success(request, 'saved successfuly')
+			msg = messages.success(request, 'Project bug created successfuly')
 			return redirect(new_bug)
 
 		""" Handle invalid form submission """
