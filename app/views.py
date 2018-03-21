@@ -7,8 +7,10 @@ from .models import Project, Bug
 from .forms import CreateNewBug
 from django.contrib import messages
 
-from rest_framework import viewsets
+from rest_framework import viewsets,generics
 from app.serializers import ProjectSerializer,ProjectBugSerializer
+from rest_framework.decorators import api_view
+
 
 
 
@@ -35,7 +37,14 @@ class ProjectBugViewSet(viewsets.ModelViewSet):
 	queryset = Bug.objects.all()
 	serializer_class = ProjectBugSerializer
 
+""" API filter by project """
+class BugByProjectList(generics.ListAPIView):
+    serializer_class = ProjectBugSerializer
 
+    def get_queryset(self):
+        """ Return a list of all bugs by the project id passed on url"""
+        project = self.kwargs['project']
+        return Bug.objects.filter(project=project)
 
 
 def new_bug(request):

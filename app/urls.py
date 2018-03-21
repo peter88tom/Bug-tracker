@@ -9,9 +9,11 @@ router.register(r'-bugs', views.ProjectBugViewSet)
 
 
 
+
 urlpatterns = [
     url(r'^$', views.homepage, name='index'),
     url(r'^create_bug/$', views.new_bug, name='submit_bug'),
     url(r'^api', include(router.urls)),
+    url('^bug-by-project/(?P<project>\w+)/$', views.BugByProjectList.as_view()),
 
 ]
