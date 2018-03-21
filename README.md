@@ -83,12 +83,12 @@ Static files are css,javascript and image files that our project will be using. 
 
 ## Running the pp
 
-No you can start the application with the following command
+Now we can start the application by using the following command
 ```
 (env)Bug-tracker$ python manage.py runserver
 ```
 
-The command will output the your application is running on port 8000, click the link and visit the page and start creating bugs for listed projects. 
+This command will tell you where the application is running, click the link and visit the page and start creating bugs for listed projects. 
 
 To create projects you have to login into the admin site of the application. here is the a way to access admin site go to *http://localhost:8000/admin*
 
@@ -104,7 +104,7 @@ To login type in the *username and password you created on createsuperuse comman
 
 * [Django Rest Framework](http://www.django-rest-framework.org/) - API used to populate data for easy bugs and projects listing and filtering.
 
-* [Vue.js](https://vuejs.org/v2/guide/) - Used query data from DRF for easy project filtering and bug listing.
+* [Vue.js](https://vuejs.org/v2/guide/) - Used retrieve data from DRF, also Vue has empowered filtering of bugs by project.
 
 * [SQLite](https://www.sqlite.org/docs.html) - For storing projects and bugs.
 
