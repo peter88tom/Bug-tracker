@@ -12,3 +12,4 @@ venv/
 .media/
 local_settings.py
 *.pyc
+*.sqlite3
