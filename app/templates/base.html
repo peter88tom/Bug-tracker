@@ -101,7 +101,8 @@
     // The api end-point should return the same formart as from fetchBugs
     onChangeProject:function(){
       var self = this;
-      console.log(this.selectedproject[0][0]);
+      this.$http.get("http://localhost:8000/bug-by-project/"+this.selectedproject[0][0]+"/")
+        .then(response=>{this.bugs=response.data});
     }
 
   }
