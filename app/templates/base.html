@@ -45,10 +45,7 @@
 <script>
 	// Add editing feautures to text areas using ckeditor
 	  ClassicEditor
-        .create( document.querySelector( '#bug-editor' ) )
-        .catch( error => {
-            console.error( error );
-        } );
+        .create( document.querySelector( '#bug-editor' ) );
 
     // Add select2 to enhance project selection
     $('#project-filter').select2();
@@ -101,8 +98,14 @@
     // The api end-point should return the same formart as from fetchBugs
     onChangeProject:function(){
       var self = this;
+       if(this.selectedproject[0][0] == 0){
+          this.$http.get("http://localhost:8000/api-bugs/")
+        .then(response=>{this.bugs=response.data});
+       }else{
+
       this.$http.get("http://localhost:8000/bug-by-project/"+this.selectedproject[0][0]+"/")
         .then(response=>{this.bugs=response.data});
+        }
     }
 
   }
