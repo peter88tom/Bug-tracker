@@ -61,7 +61,7 @@ While the environment is activate, migrate the database schema, We don't do any 
 (env)Bug-tracker$ python manage.py migrate
 ```
 
-With that comming django will migrate our database scheme to SQLite.
+With that command django will migrate our database scheme to SQLite.
 
 In this stage we didn't run the *makemigrations* because the migrations files are include in the project located in *app/migrations*
 
