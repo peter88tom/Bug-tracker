@@ -1,5 +1,5 @@
 # Bug-tracker
-A responsive web application for tracking project bugs. Th
+A responsive web application for tracking project bugs.
 
 
 ## Installation
